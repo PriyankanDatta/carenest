@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(New-Item -ItemType Directory -Force -Path \"F:\\\\notes for project\\\\carenest\\\\backend\\\\src\\\\config\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"F:\\\\notes for project\\\\carenest\\\\backend\\\\src\\\\middleware\")",
+      "Bash(New-Item -ItemType Directory -Force -Path \"F:\\\\notes for project\\\\carenest\\\\backend\\\\src\\\\routes\")",
+      "Bash(New-Item -ItemType Directory -Force -Path \"F:\\\\notes for project\\\\carenest\\\\backend\\\\src\\\\controllers\")",
+      "Bash(New-Item -ItemType Directory -Force -Path \"F:\\\\notes for project\\\\carenest\\\\backend\\\\database\")",
+      "Bash(Write-Output \"Directories created\")"
+    ]
+  }
+}
