@@ -8,10 +8,22 @@ api.interceptors.request.use(config => {
   return config
 })
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 api.interceptors.response.use(
   res => res,
-  err => {
-    if (err.response?.status === 401) {
+  async err => {
+    const config = err.config
+    const status = err.response?.status
+    const isRetryable = !err.response || status === 502 || status === 503
+
+    if (isRetryable && (config._retryCount || 0) < 3) {
+      config._retryCount = (config._retryCount || 0) + 1
+      await sleep(3000)
+      return api(config)
+    }
+
+    if (status === 401) {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
       window.location.href = '/login'
